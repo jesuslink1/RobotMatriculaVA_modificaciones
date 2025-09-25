@@ -1,0 +1,30 @@
+Codigo,Estado
+2017498746,"Error en el proceso: Message: element click intercepted: Element <button _ngcontent-wvu-c4="""" class=""btn"" routerlinkactive=""active-link"" tabindex=""0"">...</button> is not clickable at point (705, 105). Other element would receive the click: <div _ngcontent-wvu-c2="""" class=""backdrop full-screen"" style=""border-radius: 0px; background-color: rgba(0, 0, 0, 0.3);""></div>
+  (Session info: chrome=138.0.7204.97)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff725016f95+76917]
+	GetHandleVerifier [0x0x7ff725016ff0+77008]
+	(No symbol) [0x0x7ff724dc9dea]
+	(No symbol) [0x0x7ff724e28269]
+	(No symbol) [0x0x7ff724e25c02]
+	(No symbol) [0x0x7ff724e22c41]
+	(No symbol) [0x0x7ff724e21b31]
+	(No symbol) [0x0x7ff724e13368]
+	(No symbol) [0x0x7ff724e4846a]
+	(No symbol) [0x0x7ff724e12c16]
+	(No symbol) [0x0x7ff724e48680]
+	(No symbol) [0x0x7ff724e7065c]
+	(No symbol) [0x0x7ff724e48243]
+	(No symbol) [0x0x7ff724e11431]
+	(No symbol) [0x0x7ff724e121c3]
+	GetHandleVerifier [0x0x7ff7252ed2cd+3051437]
+	GetHandleVerifier [0x0x7ff7252e7923+3028483]
+	GetHandleVerifier [0x0x7ff7253058bd+3151261]
+	GetHandleVerifier [0x0x7ff72503185e+185662]
+	GetHandleVerifier [0x0x7ff72503971f+218111]
+	GetHandleVerifier [0x0x7ff72501fb14+112628]
+	GetHandleVerifier [0x0x7ff72501fcc9+113065]
+	GetHandleVerifier [0x0x7ff725006c98+10616]
+	BaseThreadInitThunk [0x0x7ffa99887374+20]
+	RtlUserThreadStart [0x0x7ffa99efcc91+33]
+"
