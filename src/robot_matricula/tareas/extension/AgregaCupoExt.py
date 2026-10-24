@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
 import time
 import pandas as pd
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from robot_matricula.core.navegador import crear_navegador_chrome
 
 # Número de Ciclo Lvo
 ciclo_lvo = 2206
@@ -17,12 +17,8 @@ excel_file = 'C:\\Users\\jramosc\\Desktop\\Proyectos\\RobotMatriculaVA_modificac
 # Leer el archivo Excel
 df = pd.read_excel(excel_file)
 
-# Configurar el driver de Chrome
-chrome_service = webdriver.chrome.service.Service('C:\\Users\\jramosc\\Downloads\\chromedriver-win64\\Chromedriver.exe')
-chrome_service.start()
-
-chrome_options = webdriver.ChromeOptions()
-new_driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+# Crear el navegador usando la función compartida
+new_driver = crear_navegador_chrome()
 
 try:
     # Abrir la página web

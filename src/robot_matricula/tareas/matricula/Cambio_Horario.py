@@ -1,12 +1,11 @@
+import time
+import csv
+import pandas as pd
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
-import time
-import pandas as pd
-import csv
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, NoSuchWindowException
-
+from robot_matricula.core.navegador import crear_navegador_chrome
 
 def click_home_button():
 
@@ -22,21 +21,11 @@ try:
     ###############################
     # INGRESO A PORTAL
 
-    # Configura el objeto Service para el controlador de Chrome
-    chrome_service = webdriver.chrome.service.Service(
-        'C:\\Users\\jramosc\\Downloads\\chromedriver-win64\\Chromedriver.exe')
+    # Crear el navegador usando la función compartida
+    driver = crear_navegador_chrome()
 
-    # Inicia el controlador de Chrome
-    chrome_service.start()
-
-    # Configura las opciones del navegador
-    chrome_options = webdriver.ChromeOptions()
-
-    # Crea una instancia del controlador de Chrome
-    driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
-
-    # Abre la página web
-    driver.get('https://matricula.sise.edu.pe/admin')
+    # Abrir la página web
+    driver.get("https://matricula.sise.edu.pe/admin")
 
     # Localiza el campo de texto por su atributo "placeholder"
     campo_texto = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Usuario']")
@@ -285,11 +274,7 @@ except Exception as e:
 finally:
     # Cierra la ventana actual del navegador
     if 'driver' in locals():
-        driver.close()
-
-    # Detiene el servicio
-    if 'chrome_service' in locals():
-        chrome_service.stop()
+        driver.quit()
 
 # Escribir los registros de errores en un archivo CSV
 intentos = 3  # Número máximo de intentos permitidos

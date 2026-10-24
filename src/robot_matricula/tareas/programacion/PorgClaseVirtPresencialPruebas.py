@@ -1,15 +1,13 @@
 import pandas as pd
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, NoSuchFrameException
-from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.alert import Alert
 from datetime import datetime, timedelta
-import time
-import sys
+from robot_matricula.core.navegador import crear_navegador_chrome
 
 
 def convertir_a_hora(valor):
@@ -111,19 +109,8 @@ df_hoja2 = pd.read_excel(excel_file, sheet_name='Hoja2')
 # Leer el archivo Excel
 df = pd.read_excel(excel_file)
 
-# Configura el objeto Service para el controlador de Chrome
-chrome_service = webdriver.chrome.service.Service(
-    'C:\\Users\\jramosc\\Downloads\\chromedriver-win64\\Chromedriver.exe')
-
-# Inicia el controlador de Chrome
-chrome_service.start()
-
-# Configura las opciones del navegador
-chrome_options = webdriver.ChromeOptions()
-# Opcional: Puedes agregar opciones adicionales según tus necesidades, como la ejecución en segundo plano o la omisión de notificaciones.
-
-# Crea una instancia del controlador de Chrome
-new_driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+# Crear el navegador usando la función compartida
+new_driver = crear_navegador_chrome()
 
 # Lista para almacenar los resultados
 resultados = []

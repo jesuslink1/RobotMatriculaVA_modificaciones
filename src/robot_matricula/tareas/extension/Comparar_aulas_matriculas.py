@@ -1,25 +1,19 @@
+import time
+import csv
+import pandas as pd
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
-import time
-import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
-import csv
+from robot_matricula.core.navegador import crear_navegador_chrome
 
 # Solicitar al usuario que ingrese el número de Ciclo Lvo.
 ciclo_lvo = input("Ingrese el número de Ciclo Lvo.: ")  # Cambiado a string para evitar problemas de comparación
 
 try:
-    # Configurar el servicio de Chrome
-    chrome_service = webdriver.chrome.service.Service(
-        'C:\\Users\\jramosc\\Downloads\\chromedriver-win64\\Chromedriver.exe')
-    chrome_service.start()
-
-    # Configurar opciones del navegador
-    chrome_options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+    # Crear el navegador usando la función compartida
+    driver = crear_navegador_chrome()
 
     # Iniciar sesión
     driver.get("https://aulavirtualfcid.sise.edu.pe/login/canvas")
@@ -115,11 +109,7 @@ try:
 finally:
     # Cierra la ventana actual del navegador
     if 'driver' in locals():
-        driver.close()
-
-    # Detiene el servicio
-    if 'chrome_service' in locals():
-        chrome_service.stop()
+        driver.quit()
 
     # Guardar resultados en un archivo CSV (Correcto y Verificar incluidos)
     intentos = 3  # Número máximo de intentos permitidos

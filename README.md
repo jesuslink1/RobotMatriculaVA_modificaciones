@@ -93,8 +93,7 @@ RobotMatriculaVA/
 ├── .gitignore
 └── README.md
 ```
- 
-> Ajusta este árbol a la distribución real de carpetas de tu repositorio.
+
  
 ## ⚙️ Requisitos y ejecución
  
@@ -136,22 +135,7 @@ python src/verificaciones/Verificador_Pre_Matricula.py
   <br><em>Módulo de verificaciones</em>
 </p>
 > Capturas de interfaz implementada.
- 
-## 🔐 Seguridad y buenas prácticas
- 
-- Usa el proyecto únicamente en entornos y con cuentas **autorizadas**.
-- **Nunca** subas al repositorio credenciales, cookies de sesión, datos personales ni archivos académicos reales.
-- Los datos reales viven en `data/` y están excluidos mediante `.gitignore`.
-- Las credenciales deben leerse desde variables de entorno o un archivo local no versionado, nunca desde el código.
-- Prueba primero con un conjunto pequeño de datos antes de lanzar procesos masivos.
-## 🛣️ Roadmap
- 
-- [x] Reorganización del repositorio por módulos
-- [x] Exclusión de datos sensibles con `.gitignore`
-- [ ] Revisión del código para eliminar valores sensibles o fijos
-- [ ] Gestión de configuración centralizada
-- [ ] Registro de logs estructurado
-- [ ] Interfaz gráfica (Tkinter u otra)
+
 ## 💡 Competencias demostradas
  
 - Automatización web con Python y Selenium

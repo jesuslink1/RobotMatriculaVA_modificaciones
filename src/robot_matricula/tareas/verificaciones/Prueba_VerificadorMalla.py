@@ -1,12 +1,12 @@
-from selenium import webdriver
+import pandas as pd
+import re
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-import pandas as pd
-import re
-import time
+from robot_matricula.core.navegador import crear_navegador_chrome
 
 def navegar_a_centro_servicios():
     # Abre la página web
@@ -61,11 +61,8 @@ def navegar_a_centro_servicios():
 df = pd.read_excel('C:\\Users\\jramosc\\Desktop\\Proyectos\\RobotMatriculaVA_modificaciones\\CodigosVerificarMalla.xlsx', sheet_name='Hoja1')
 codigos_alumno = df['Codigo'].tolist()
 
-chrome_service = webdriver.chrome.service.Service('C:\\Users\\jramosc\\Downloads\\chromedriver-win64\\Chromedriver.exe')
-chrome_service.start()
-
-chrome_options = webdriver.ChromeOptions()
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+# Crear el navegador usando la función compartida
+driver = crear_navegador_chrome()
 
 # Abre la página web
 driver.get('https://academico.sise.edu.pe/psp/CS90PRD/?cmd=login')

@@ -1,12 +1,12 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 import time
+from robot_matricula.core.navegador import crear_navegador_chrome
 
 # Solicitar al usuario que ingrese el número de Ciclo Lvo.
 ciclo_lvo = int(input("Ingrese el número de Ciclo Lvo.: "))
@@ -15,11 +15,8 @@ ciclo_lvo = int(input("Ingrese el número de Ciclo Lvo.: "))
 df = pd.read_excel('C:\\Users\\jramosc\\Desktop\\Proyectos\\RobotMatriculaVA_modificaciones\\Convalidaciones\\Convalidaciones.xlsx', sheet_name='Hoja1')
 codigos_alumno = df['IdAlumno'].tolist()
 
-chrome_service = webdriver.chrome.service.Service('C:\\Users\\jramosc\\Downloads\\chromedriver-win64\\Chromedriver.exe')
-chrome_service.start()
-
-chrome_options = webdriver.ChromeOptions()
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+# Crear el navegador usando la función compartida
+driver = crear_navegador_chrome()
 
 # Abre la página web
 driver.get('https://academico.sise.edu.pe/psp/CS90PRD/?cmd=login')

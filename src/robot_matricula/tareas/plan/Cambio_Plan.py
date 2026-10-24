@@ -1,30 +1,18 @@
 import pandas as pd
-from selenium import webdriver
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException
+from robot_matricula.core.navegador import crear_navegador_chrome
 
 
 # Leer los códigos de alumno desde un archivo Excel
 df = pd.read_excel('C:\\Users\\jramosc\\Desktop\\Proyectos\\RobotMatriculaVA_modificaciones\\Cambio_plan.xlsx', sheet_name='Hoja1')
 codigos_alumno = df['Codigo'].tolist()
 
-# Configura el objeto Service para el controlador de Chrome
-chrome_service = webdriver.chrome.service.Service('C:\\Users\\jramosc\\Downloads\\chromedriver-win64\\Chromedriver.exe')
-
-# Inicia el controlador de Chrome
-chrome_service.start()
-
-# Configura las opciones del navegador
-chrome_options = webdriver.ChromeOptions()
-# Opcional: Puedes agregar opciones adicionales según tus necesidades, como la ejecución en segundo plano o la omisión de notificaciones.
-
-# Crea una instancia del controlador de Chrome
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+# Crear el navegador usando la función compartida
+driver = crear_navegador_chrome()
 
 # Abre la página web
 driver.get('https://academico.sise.edu.pe/psp/CS90PRD/?cmd=login')
@@ -212,6 +200,3 @@ for index, row in df.iterrows():
 
 # Cerrar el navegador
 driver.quit()
-
-# Detener el servicio del controlador de Chrome
-chrome_service.stop()
